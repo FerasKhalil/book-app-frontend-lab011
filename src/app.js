@@ -11,6 +11,7 @@ import Login from './login';
 import Logout from './logOutButton';
 import User from './user';
 import { withAuth0 } from '@auth0/auth0-react';
+import MyFavoriteBooks from './myFavoriteBooks';
 //it only exports the app if it's authorized
 class App extends React.Component {
 
@@ -24,11 +25,11 @@ class App extends React.Component {
               <Switch>
                 <Route exact path="/">
                   {/* TODO: if the user is logged in, render the `MyFavoriteBooks` component, if they are not, render the `Login` component */}
-                  {!this.props.auth0.isAuthenticated?<Login></Login>:<Logout></Logout>}
+                  {!this.props.auth0.isAuthenticated? <MyFavoriteBooks/>:<Login/>}
                 </Route>
                 {/* TODO: add a route with a path of '/profile' that renders a `Profile` component */}
-                <Route exact path="/profile">
-                  <User></User>
+                <Route path="/profile">
+                  <User/>
                   </Route>
               </Switch>
             <Footer />
